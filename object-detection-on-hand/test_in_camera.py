@@ -2,10 +2,10 @@ import cv2
 from ultralytics import YOLO
 
 # Load the trained model
-model = YOLO('C:\\Users\\Rafli\\cat-detection-project\\yolov8s.pt')
+model = YOLO('HOME-PATH\\yolov8s.pt')
 
 # Open the video file
-cap = cv2.VideoCapture('C:\\Users\\Rafli\\cat-detection-project\\WIN_20250105_08_05_17_Pro.mp4')
+cap = cv2.VideoCapture('LOCAL-VIDEO-FILE')
 
 # Get video properties
 fps = cap.get(cv2.CAP_PROP_FPS)  # Frames per second
