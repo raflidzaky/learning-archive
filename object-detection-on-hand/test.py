@@ -1,8 +1,8 @@
 from model import model
 
-results = model('C:\\Users\\Rafli\\cat-detection-project\\WIN_20250105_08_05_17_Pro.mp4')
+results = model('LOCAL-VIDEO')
 
-output_folder = "C:\\Users\\Rafli\\cat-detection-project\\output_results"
+output_folder = "OUTPUT-FOLDER"
 
 # Ensure the folder exists
 import os
@@ -10,3 +10,7 @@ import os
 # Save the results to the specified folder
 for i, result in enumerate(results):
     result.save(filename=os.path.join(output_folder, f'frame_{i}'))
+
+# THIS FILE IS NOT IN USE 
+# Since what I need is real-video labelling, not per-frame labelling
+# Focus on test_in_camera.py instead
