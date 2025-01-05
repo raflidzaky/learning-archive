@@ -1,0 +1,5 @@
+.venv/*
+output_video
+WIN_20250105_08_05_17_Pro
+output_results/*
+__pycache__/*
