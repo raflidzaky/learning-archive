@@ -4,3 +4,6 @@ There are 2 flows of testing:
 
 The last one often occurs on CI/CD workflow. The first one when the team is small. While automated, CI/CD workflow test has a greater risk if
 the test doesnt robust enough. It deploys a potentially logic error code.
+
+==================================
+While using YAML for config and formatting, we still needs to check edge cases. Hence, unit testing is still needed to check anomalous behaviour. Especially strong with checking Machine Learning behaviour
