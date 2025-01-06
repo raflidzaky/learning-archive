@@ -1,0 +1,6 @@
+There are 2 flows of testing:
+1. Build the code > test it locally > success > manually deploy 
+2. Build the code > pull request (deploy the code) > test on the staging area > success > code is deployed on live production
+
+The last one often occurs on CI/CD workflow. The first one when the team is small. While automated, CI/CD workflow test has a greater risk if
+the test doesnt robust enough. It deploys a potentially logic error code.
