@@ -8,6 +8,8 @@ from basic_ml_pipeline import RegressionModel
 
 # Basically, both test unit function
 # The difference is, pytest needs no class (just direct function to test specific part of a function)
+# Also, unittest needs an entry point (if __name__ == "__main__": unittest.main()) to collect all of the test case
+# To partially check specific function, just call the method (for unittest) or pytest -k test_* (for pytest)
 
 # Initialize the data
 X = np.array([[1], [2], [3], [4], [5]])
