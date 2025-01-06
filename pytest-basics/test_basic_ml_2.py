@@ -19,6 +19,25 @@ y = np.array([1, 2, 3, 4, 5])
 model = RegressionModel(LinearRegression(), X, y)
 X_train, X_test, y_train, y_test = model.train_test()
 
+def test_X_type():
+    # Test that X is a NumPy array
+    assert isinstance(X, np.ndarray), f"Expected X to be a numpy.ndarray, but got {type(X)}"
+    
+def test_X_element_type():
+    # Test that each element inside X is of type numpy.ndarray
+    for i in X:
+        for j in i:  # Iterate over each element in X (inner elements)
+            assert isinstance(j, np.int64), f"Expected element in X to be np.int64, but got {type(j)}"
+
+def test_y_type():
+    # Test that X is a NumPy array
+    assert isinstance(y, np.ndarray), f"Expected y to be a numpy.ndarray, but got {type(y)}"
+    
+def test_y_element_type():
+    # Test that each element inside X is of type numpy.ndarray
+    for i in y:
+        assert isinstance(i, np.int64), f"Expected element in X to be np.int64, but got {type(y)}"
+    
 def test_split():
     # This func input is X/y train and test
     # The end goal is to make sure whether it really splits out the data AND
