@@ -3,6 +3,12 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from basic_ml_pipeline import RegressionModel
 
+# Different from previous "test_logic.py" which uses unittest
+# This module uses pytest framework
+
+# Basically, both test unit function
+# The difference is, pytest needs no class (just direct function to test specific part of a function)
+
 # Initialize the data
 X = np.array([[1], [2], [3], [4], [5]])
 y = np.array([1, 2, 3, 4, 5])
