@@ -1,0 +1,5 @@
+The simple flow:
+1. Testing the model pipeline: data split, train the model, test model, and handle prediction. If the model passes the Test, we can start to deploy on
+API.
+2. Init uvicorn to run API. Uvicorn is a web server useful to handle low-level network communication. It leaves us free to just handle the app logic. 
+FastAPI uses Asynchronous Server Gateway Interface.  
