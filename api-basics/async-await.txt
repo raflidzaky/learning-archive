@@ -1,0 +1,21 @@
+Classical synchronous program
+def a():
+  return a
+
+def b():
+  return b
+if __name__ == "__main__":
+  a
+  b
+
+The b is being ran after a done. If there are two users with different request (a) and (b). Users with (b) have to wait (a). Poor user experience
+
+Asynchronous program
+async def a():
+  return await a
+
+async def b():
+  return await b
+
+This make a and b done concurrently at once. While waiting I/O (input-output process) from a is done, the system do the b. How? It "freezes" the a BUT NOT SHUT a DOWN. 
+Thus, made b possible to run. 
