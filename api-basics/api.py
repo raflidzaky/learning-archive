@@ -9,10 +9,22 @@ app = FastAPI()
 class Item(BaseModel):
     X: int
 
-# Load the trained model from the pickle file
-with open('trained_model.pkl', 'rb') as pickle_in:
-    ml_model = pickle.load(pickle_in).model  # Access the LinearRegression model
+# Make the model asynchronous (can be handled concurrently)
+async def load_model():
+    # Load the model asynchronously to avoid blocking other requests (such as POST request for feature or prediction)
+     return await asyncio.to_thread(pickle.load, open('trained_model.pkl', 'rb'))
 
+# The ML loading task currently is asynchronous
+# It is initialized as None
+# Initially, I want to make it active whenever user make a requests, but that's not efficient
+ml_model = None
+
+# On event might be prefered because the model is requested when the server is started
+@app.on_event("startup")
+async def startup_event():
+    global ml_model
+    # Load the model during the app startup
+    ml_model = await load_model()
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the API"}
@@ -22,6 +34,7 @@ def read_root():
 # Classic Google won't accept this, so make script on JS
 @app.post("/feature")
 async def scoring_endpoint(item:Item):
+    
     return item
 
 # Konsepnya, kita POST the feature to API
@@ -41,7 +54,7 @@ async def scores(item:Item):
     X_2d = np.array([[item.X]])
     
     # Make a prediction using the 2D array
-    yhat = ml_model.predict(X_2d)
+    yhat = await asyncio.to_thread(ml_model.predict, X_2d)
     
     return {"prediction": yhat[0]}
 
@@ -56,7 +69,7 @@ async def scores(X: int): # Query params
     X_2d = np.array([[X]])
     
     # Make a prediction using the 2D array
-    yhat = ml_model.predict(X_2d)
+    yhat = await asyncio.to_thread(ml_model.predict, X_2d)
     
     return {"prediction": yhat[0]}
 
